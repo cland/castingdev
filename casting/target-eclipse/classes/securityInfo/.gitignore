@@ -1,8 +1,0 @@
-/config.gsp
-/currentAuth.gsp
-/filterChain.gsp
-/logoutHandlers.gsp
-/mappings.gsp
-/providers.gsp
-/usercache.gsp
-/voters.gsp
