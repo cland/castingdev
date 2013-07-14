@@ -5,6 +5,7 @@ class Rating {
 	String comments
 	User createdBy
 	Date dateCreated
+	static belongsTo = [profile:CastingProfile]
 	static constraints = {
 	}
 	def beforeInsert = {

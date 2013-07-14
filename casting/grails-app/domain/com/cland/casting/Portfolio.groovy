@@ -4,7 +4,7 @@ class Portfolio {
 	String name
 	String comments
 	static belongsTo = [production:Production]
-	static hasMany =[profiles:CastingProfile]
+	static hasMany =[candidates:Candidate]
 	static attachmentable = true
 	static constraints = {
 	}

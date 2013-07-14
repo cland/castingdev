@@ -15,6 +15,7 @@ class CastingProfile {
 	static hasMany = [ratings:Rating]
 	static belongsTo = [candidate:Candidate]
 	static constraints = {
+		
 	}
 	def beforeInsert = {
 		// your code goes here
@@ -30,6 +31,6 @@ class CastingProfile {
 	}
 
 	String toString(){
-		//TODO: "${name}"
+		"${castNo}"
 	}
 } //end class

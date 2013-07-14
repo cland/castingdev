@@ -2,14 +2,14 @@ package com.cland.casting;
 
 class Candidate {
 	//casting details:
-	//User person
+	User person
 	String clothing
 	String shoe
 	String waist
 	String height
 	String hair
 	String eyes
-	static belongsTo = [person:User]
+	//static belongsTo = [person:User]
 	static hasMany = [profiles:CastingProfile, videos:VideoSet,pictures:PictureSet]
 	static constraints = {
 	}
@@ -27,6 +27,6 @@ class Candidate {
 	}
 
 	String toString(){
-		//TODO: "${name}"
+		"${person?.toString()}"
 	}
 } //end class

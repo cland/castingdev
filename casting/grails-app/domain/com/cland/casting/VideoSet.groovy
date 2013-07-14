@@ -3,6 +3,7 @@ package com.cland.casting
 class VideoSet {
 	String name
 	Date dateCreated
+	static belongsTo = [candidate:Candidate]
 	static attachmentable = true
 	static constraints = {
 	}

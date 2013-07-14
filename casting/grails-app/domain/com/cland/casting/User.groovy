@@ -33,7 +33,7 @@ class User {
 	 Date dateCreated
 	 Organisation company
 	 
-	 Candidate candidate
+	// Candidate candidate
 	 
 	static constraints = {
 		username blank: false, unique: true
@@ -57,7 +57,7 @@ class User {
 		email(email:true)
 		company(nullable:true)
 		dateCreated()
-		candidate(nullable:true)
+		//candidate(nullable:true)
 	}
 
 	static mapping = {
