@@ -31,6 +31,15 @@
 		<g:message code="portfolio.profiles.label" default="Profiles" />
 		
 	</label>
-	<g:select name="profiles" from="${com.cland.casting.CastingProfile.list()}" multiple="multiple" optionKey="id" size="5" value="${portfolioInstance?.profiles*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${portfolioInstance?.profiles?}" var="p">
+    <li><g:link controller="castingProfile" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="castingProfile" action="create" params="['portfolio.id': portfolioInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'castingProfile.label', default: 'CastingProfile')])}</g:link>
+</li>
+</ul>
+
 </div>
 

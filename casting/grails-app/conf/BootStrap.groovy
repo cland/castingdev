@@ -129,12 +129,27 @@ class BootStrap {
 						address:"none",
 						city:"Durban",
 						email:"c1@whereever.com")
-		
+					
 						candidate1.save()
 						if(candidate1.hasErrors()){
 							println candidate1.errors
 						}
 					
+				def cand1 = new Candidate(person:candidate1,clothing:"34",shoe:"8",waist:"32",height:"5.6ft",hair:"black",eyes:"blue")
+				def picset1 = new PictureSet(name:"Pic set1")
+				def picset2 = new PictureSet(name:"Pic set2")
+				def vidset1 = new VideoSet(name:"Vid set1")
+				def vidset2 = new VideoSet(name:"Vid set2")
+				cand1.addToPictures(picset1)
+				cand1.addToPictures(picset2)
+				cand1.addToVideos(vidset1)
+				cand1.addToVideos(vidset2)
+				cand1.save()
+				if(cand1.hasErrors()){
+					println cand1.errors
+				}
+				
+				
 				def candiate2 = new User(username: 'candidate2',
 				enabled: true,
 				password: 'password',
@@ -189,10 +204,14 @@ class BootStrap {
 						println agency.errors
 					}
 					def client = new Client(company:org2)
+					def production = new Production(name:"Cape Advert")
+					client.addToProductions(production) 
 					client.save()
 					if(client.hasErrors()){
 						println client.errors
 					}
+					
+					
 				break
 			case "PRODUCTION" :
 				

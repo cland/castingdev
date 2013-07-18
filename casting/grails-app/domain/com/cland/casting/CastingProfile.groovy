@@ -9,11 +9,11 @@ class CastingProfile {
 	Integer round
 	Double averating
 	String comments
-	//Production production
+	Candidate canditate
 	VideoSet videos
 	PictureSet pictures
 	static hasMany = [ratings:Rating]
-	static belongsTo = [candidate:Candidate]
+	static belongsTo = [portfolio:Portfolio]
 	static constraints = {
 		
 	}
@@ -31,6 +31,6 @@ class CastingProfile {
 	}
 
 	String toString(){
-		"${castNo}"
+		"Cast: ${castNo} - ${canditate?.person?.toString()}"
 	}
 } //end class

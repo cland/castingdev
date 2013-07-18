@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'rating.dateCreated.label', default: 'Date Created')}" />
 					
+						<th><g:message code="rating.profile.label" default="Profile" /></th>
+					
 						<g:sortableColumn property="rating" title="${message(code: 'rating.rating.label', default: 'Rating')}" />
 					
 					</tr>
@@ -43,6 +45,8 @@
 						<td>${fieldValue(bean: ratingInstance, field: "createdBy")}</td>
 					
 						<td><g:formatDate date="${ratingInstance.dateCreated}" /></td>
+					
+						<td>${fieldValue(bean: ratingInstance, field: "profile")}</td>
 					
 						<td>${fieldValue(bean: ratingInstance, field: "rating")}</td>
 					

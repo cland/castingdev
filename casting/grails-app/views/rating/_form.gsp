@@ -18,6 +18,14 @@
 	<g:select id="createdBy" name="createdBy.id" from="${com.cland.casting.User.list()}" optionKey="id" required="" value="${ratingInstance?.createdBy?.id}" class="many-to-one"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: ratingInstance, field: 'profile', 'error')} required">
+	<label for="profile">
+		<g:message code="rating.profile.label" default="Profile" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="profile" name="profile.id" from="${com.cland.casting.CastingProfile.list()}" optionKey="id" required="" value="${ratingInstance?.profile?.id}" class="many-to-one"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: ratingInstance, field: 'rating', 'error')} required">
 	<label for="rating">
 		<g:message code="rating.rating.label" default="Rating" />

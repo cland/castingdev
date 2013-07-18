@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${ratingInstance?.profile}">
+				<li class="fieldcontain">
+					<span id="profile-label" class="property-label"><g:message code="rating.profile.label" default="Profile" /></span>
+					
+						<span class="property-value" aria-labelledby="profile-label"><g:link controller="castingProfile" action="show" id="${ratingInstance?.profile?.id}">${ratingInstance?.profile?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${ratingInstance?.rating}">
 				<li class="fieldcontain">
 					<span id="rating-label" class="property-label"><g:message code="rating.rating.label" default="Rating" /></span>

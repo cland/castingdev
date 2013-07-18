@@ -2,6 +2,21 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: productionInstance, field: 'categories', 'error')} ">
+	<label for="categories">
+		<g:message code="production.categories.label" default="Categories" />
+		
+	</label>
+	<ul class="one-to-many">
+<g:each in="${productionInstance?.categories?}" var="p">
+    <li><g:link controller="castingCategory" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="castingCategory" action="create" params="['production.id': productionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'castingCategory.label', default: 'Categories')])}</g:link>
+</li>
+</ul>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: productionInstance, field: 'client', 'error')} required">
 	<label for="client">
 		<g:message code="production.client.label" default="Client" />
@@ -33,5 +48,20 @@
 </li>
 </ul>
 
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: productionInstance, field: 'roles', 'error')} ">
+	<label for="roles">
+		<g:message code="production.roles.label" default="Roles" />
+		
+	</label>
+	<ul class="one-to-many">
+<g:each in="${productionInstance?.roles?}" var="p">
+    <li><g:link controller="castingRole" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="castingRole" action="create" params="['production.id': productionInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'castingRole.label', default: 'Roles')])}</g:link>
+</li>
+</ul>
 </div>
 

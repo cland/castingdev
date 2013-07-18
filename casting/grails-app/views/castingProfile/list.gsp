@@ -26,7 +26,7 @@
 					
 						<g:sortableColumn property="averating" title="${message(code: 'castingProfile.averating.label', default: 'Averating')}" />
 					
-						<th><g:message code="castingProfile.candidate.label" default="Candidate" /></th>
+						<th><g:message code="castingProfile.canditate.label" default="Canditate" /></th>
 					
 						<g:sortableColumn property="castDate" title="${message(code: 'castingProfile.castDate.label', default: 'Cast Date')}" />
 					
@@ -44,7 +44,7 @@
 					
 						<td><g:link action="show" id="${castingProfileInstance.id}">${fieldValue(bean: castingProfileInstance, field: "averating")}</g:link></td>
 					
-						<td>${fieldValue(bean: castingProfileInstance, field: "candidate")}</td>
+						<td>${fieldValue(bean: castingProfileInstance, field: "canditate")}</td>
 					
 						<td><g:formatDate date="${castingProfileInstance.castDate}" /></td>
 					

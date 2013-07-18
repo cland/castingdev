@@ -32,11 +32,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${castingProfileInstance?.candidate}">
+				<g:if test="${castingProfileInstance?.canditate}">
 				<li class="fieldcontain">
-					<span id="candidate-label" class="property-label"><g:message code="castingProfile.candidate.label" default="Candidate" /></span>
+					<span id="canditate-label" class="property-label"><g:message code="castingProfile.canditate.label" default="Canditate" /></span>
 					
-						<span class="property-value" aria-labelledby="candidate-label"><g:link controller="candidate" action="show" id="${castingProfileInstance?.candidate?.id}">${castingProfileInstance?.candidate?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="canditate-label"><g:link controller="candidate" action="show" id="${castingProfileInstance?.canditate?.id}">${castingProfileInstance?.canditate?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -82,6 +82,15 @@
 					<span id="pictures-label" class="property-label"><g:message code="castingProfile.pictures.label" default="Pictures" /></span>
 					
 						<span class="property-value" aria-labelledby="pictures-label"><g:link controller="pictureSet" action="show" id="${castingProfileInstance?.pictures?.id}">${castingProfileInstance?.pictures?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${castingProfileInstance?.portfolio}">
+				<li class="fieldcontain">
+					<span id="portfolio-label" class="property-label"><g:message code="castingProfile.portfolio.label" default="Portfolio" /></span>
+					
+						<span class="property-value" aria-labelledby="portfolio-label"><g:link controller="portfolio" action="show" id="${castingProfileInstance?.portfolio?.id}">${castingProfileInstance?.portfolio?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

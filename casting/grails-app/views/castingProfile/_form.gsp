@@ -10,12 +10,12 @@
 	<g:field name="averating" value="${fieldValue(bean: castingProfileInstance, field: 'averating')}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: castingProfileInstance, field: 'candidate', 'error')} required">
-	<label for="candidate">
-		<g:message code="castingProfile.candidate.label" default="Candidate" />
+<div class="fieldcontain ${hasErrors(bean: castingProfileInstance, field: 'canditate', 'error')} required">
+	<label for="canditate">
+		<g:message code="castingProfile.canditate.label" default="Canditate" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="candidate" name="candidate.id" from="${com.cland.casting.Candidate.list()}" optionKey="id" required="" value="${castingProfileInstance?.candidate?.id}" class="many-to-one"/>
+	<g:select id="canditate" name="canditate.id" from="${com.cland.casting.Candidate.list()}" optionKey="id" required="" value="${castingProfileInstance?.canditate?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: castingProfileInstance, field: 'castDate', 'error')} required">
@@ -58,12 +58,29 @@
 	<g:select id="pictures" name="pictures.id" from="${com.cland.casting.PictureSet.list()}" optionKey="id" required="" value="${castingProfileInstance?.pictures?.id}" class="many-to-one"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: castingProfileInstance, field: 'portfolio', 'error')} required">
+	<label for="portfolio">
+		<g:message code="castingProfile.portfolio.label" default="Portfolio" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="portfolio" name="portfolio.id" from="${com.cland.casting.Portfolio.list()}" optionKey="id" required="" value="${castingProfileInstance?.portfolio?.id}" class="many-to-one"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: castingProfileInstance, field: 'ratings', 'error')} ">
 	<label for="ratings">
 		<g:message code="castingProfile.ratings.label" default="Ratings" />
 		
 	</label>
-	<g:select name="ratings" from="${com.cland.casting.Rating.list()}" multiple="multiple" optionKey="id" size="5" value="${castingProfileInstance?.ratings*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${castingProfileInstance?.ratings?}" var="r">
+    <li><g:link controller="rating" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="rating" action="create" params="['castingProfile.id': castingProfileInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'rating.label', default: 'Rating')])}</g:link>
+</li>
+</ul>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: castingProfileInstance, field: 'round', 'error')} required">

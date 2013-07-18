@@ -23,6 +23,17 @@
 			</g:if>
 			<ol class="property-list production">
 			
+				<g:if test="${productionInstance?.categories}">
+				<li class="fieldcontain">
+					<span id="categories-label" class="property-label"><g:message code="production.categories.label" default="Categories" /></span>
+					
+						<g:each in="${productionInstance.categories}" var="c">
+						<span class="property-value" aria-labelledby="categories-label"><g:link controller="castingCategory" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${productionInstance?.client}">
 				<li class="fieldcontain">
 					<span id="client-label" class="property-label"><g:message code="production.client.label" default="Client" /></span>
@@ -47,6 +58,17 @@
 					
 						<g:each in="${productionInstance.portfolios}" var="p">
 						<span class="property-value" aria-labelledby="portfolios-label"><g:link controller="portfolio" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${productionInstance?.roles}">
+				<li class="fieldcontain">
+					<span id="roles-label" class="property-label"><g:message code="production.roles.label" default="Roles" /></span>
+					
+						<g:each in="${productionInstance.roles}" var="r">
+						<span class="property-value" aria-labelledby="roles-label"><g:link controller="castingRole" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

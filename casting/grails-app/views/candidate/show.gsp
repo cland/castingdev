@@ -79,17 +79,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${candidateInstance?.profiles}">
-				<li class="fieldcontain">
-					<span id="profiles-label" class="property-label"><g:message code="candidate.profiles.label" default="Profiles" /></span>
-					
-						<g:each in="${candidateInstance.profiles}" var="p">
-						<span class="property-value" aria-labelledby="profiles-label"><g:link controller="castingProfile" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${candidateInstance?.shoe}">
 				<li class="fieldcontain">
 					<span id="shoe-label" class="property-label"><g:message code="candidate.shoe.label" default="Shoe" /></span>

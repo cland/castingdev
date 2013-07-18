@@ -59,23 +59,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: candidateInstance, field: 'profiles', 'error')} ">
-	<label for="profiles">
-		<g:message code="candidate.profiles.label" default="Profiles" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${candidateInstance?.profiles?}" var="p">
-    <li><g:link controller="castingProfile" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="castingProfile" action="create" params="['candidate.id': candidateInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'castingProfile.label', default: 'CastingProfile')])}</g:link>
-</li>
-</ul>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: candidateInstance, field: 'shoe', 'error')} ">
 	<label for="shoe">
 		<g:message code="candidate.shoe.label" default="Shoe" />

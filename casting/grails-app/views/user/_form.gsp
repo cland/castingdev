@@ -162,14 +162,6 @@
 	<g:select id="company" name="company.id" from="${com.cland.casting.Organisation.list()}" optionKey="id" value="${userInstance?.company?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'candidate', 'error')} ">
-	<label for="candidate">
-		<g:message code="user.candidate.label" default="Candidate" />
-		
-	</label>
-	<g:select id="candidate" name="candidate.id" from="${com.cland.casting.Candidate.list()}" optionKey="id" value="${userInstance?.candidate?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
 	<label for="accountExpired">
 		<g:message code="user.accountExpired.label" default="Account Expired" />

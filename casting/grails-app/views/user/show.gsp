@@ -212,15 +212,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.candidate}">
-				<li class="fieldcontain">
-					<span id="candidate-label" class="property-label"><g:message code="user.candidate.label" default="Candidate" /></span>
-					
-						<span class="property-value" aria-labelledby="candidate-label"><g:link controller="candidate" action="show" id="${userInstance?.candidate?.id}">${userInstance?.candidate?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${userInstance?.accountExpired}">
 				<li class="fieldcontain">
 					<span id="accountExpired-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>

@@ -10,7 +10,7 @@ class Candidate {
 	String hair
 	String eyes
 	//static belongsTo = [person:User]
-	static hasMany = [profiles:CastingProfile, videos:VideoSet,pictures:PictureSet]
+	static hasMany = [videos:VideoSet,pictures:PictureSet]
 	static constraints = {
 	}
 	def beforeInsert = {
