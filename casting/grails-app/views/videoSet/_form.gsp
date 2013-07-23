@@ -17,4 +17,10 @@
 	</label>
 	<g:textField name="name" value="${videoSetInstance?.name}"/>
 </div>
+<div class="fieldcontain">
 
+<h3>Videos</h3>
+<input type="file" name="movies"/>
+<input type="file" name="movies"/>
+
+</div>

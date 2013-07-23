@@ -51,6 +51,15 @@
 				</g:if>
 			
 			</ol>
+		<div id="attachments" class="attachments">
+			<attachments:each bean="${videoSetInstance}">
+				<attachments:icon attachment="${attachment}" />
+				<attachments:deleteLink attachment="${attachment}" label="${'[ X ]'}"
+					returnPageURI="${createLink(action:'show', id:videoSetInstance.id,absolute:true)}" />
+				<attachments:downloadLink attachment="${attachment}" />
+				${attachment.niceLength}
+			</attachments:each>
+		</div>
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${videoSetInstance?.id}" />

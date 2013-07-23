@@ -1,7 +1,7 @@
 package com.cland.casting
 
 import org.springframework.dao.DataIntegrityViolationException
-
+import com.macrobit.grails.plugins.attachmentable.domains.Attachment;
 class VideoSetController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -20,12 +20,14 @@ class VideoSetController {
     }
 
     def save() {
+		
         def videoSetInstance = new VideoSet(params)
         if (!videoSetInstance.save(flush: true)) {
             render(view: "create", model: [videoSetInstance: videoSetInstance])
             return
         }
-
+		attachUploadedFilesTo(videoSetInstance)
+		println("saved! ${videoSetInstance.totalAttachments}" )
         flash.message = message(code: 'default.created.message', args: [message(code: 'videoSet.label', default: 'VideoSet'), videoSetInstance.id])
         redirect(action: "show", id: videoSetInstance.id)
     }
@@ -53,6 +55,7 @@ class VideoSetController {
     }
 
     def update(Long id, Long version) {
+		
         def videoSetInstance = VideoSet.get(id)
         if (!videoSetInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'videoSet.label', default: 'VideoSet'), id])
@@ -76,7 +79,7 @@ class VideoSetController {
             render(view: "edit", model: [videoSetInstance: videoSetInstance])
             return
         }
-
+		attachUploadedFilesTo(videoSetInstance)
         flash.message = message(code: 'default.updated.message', args: [message(code: 'videoSet.label', default: 'VideoSet'), videoSetInstance.id])
         redirect(action: "show", id: videoSetInstance.id)
     }
