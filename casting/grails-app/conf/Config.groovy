@@ -100,3 +100,27 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.cland.casting.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.cland.casting.UserRole'
 grails.plugins.springsecurity.authority.className = 'com.cland.casting.Role'
+grails.plugins.springsecurity.ui.encodePassword = false //added manually, jd - 19/05/2013
+
+//grails.plugins.springsecurity.securityConfigType = "Annotation"
+//grails.plugins.springsecurity.rejectIfNoRule = true
+
+/** ORDERING: REALLY-SECURE FIRST to LESS SECURE **/
+grails.plugins.springsecurity.controllerAnnotations.staticRules=[
+	//'/**': ['IS_AUTHENTICATED_FULLY'],
+	//** ADMIN ONLY
+	 '/person/create/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	 '/person/edit/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	'/admin/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	'/personRole/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	'/registration/create/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	'/registration/edit/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	'/role/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	'/user/**': ["hasRole('ROLE_ADMIN')",'IS_AUTHENTICATED_FULLY'],
+	
+	//** GENERAL AUTHENTICATED USER
+	'/home/**': ['IS_AUTHENTICATED_FULLY'],
+
+	'/login/**': ['IS_AUTHENTICATED_ANONYMOUSLY'],
+	'/logout/**': ['IS_AUTHENTICATED_ANONYMOUSLY']
+]

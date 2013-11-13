@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>Technical Panel</title>
 		<style type="text/css" media="screen">
 			#status {
 				background-color: #eee;
@@ -82,7 +82,15 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
+		<div class="nav" role="navigation">
+			<ul>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+				<li><a class="home" href="${createLink(uri: '/')}">Productions</a></li>
+				<li><a class="home" href="${createLink(uri: '/')}">Agencies</a></li>
+				<li><a class="home" href="${createLink(uri: '/')}">Clients</a></li>				
+			</ul>
+		</div>
+		<div id="status1" class="leftbar" role="complementary">
 			<h1>Application Status</h1>
 			<ul>
 				<li>App version: <g:meta name="app.version"/></li>

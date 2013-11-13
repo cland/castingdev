@@ -6,6 +6,16 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'production.label', default: 'Production')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
+<link rel="stylesheet"	href="${resource(dir:'css/south-street',file:'jquery-ui-1.10.3.custom.min.css')}" />
+<g:javascript library="jquerymin" />
+<g:javascript library="jqueryuilatest" />
+	<script type="text/javascript">
+//<![CDATA[
+var cland_params = {
+		active_tab : function(){ if (${params.tab==null}) return 0; else return ${params.tab};}
+	}
+//]]>
+</script>		
 	</head>
 	<body>
 		<a href="#show-production" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -16,65 +26,31 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
+		<div id="status" class="leftbar" role="complementary">
+			<h1>Client Details</h1>
+			<ul>
+			<g:if test="${productionInstance?.client}">
+				<li>
+					Name: <span class="property-value" aria-labelledby="client-label"><g:link controller="client" action="show" id="${productionInstance?.client?.id}">${productionInstance?.client?.encodeAsHTML()}</g:link></span>																
+				</li>
+				<li>Tel: ${productionInstance?.client?.company?.phoneNo}</li>				
+				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
+				</g:if>							
+			</ul>
+			<br/>
+			<h1>Some More Info</h1>
+			<ul>
+			<li>one</li>
+			<li>two</li>
+			</ul>
+		</div>
 		<div id="show-production" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>Production: ${productionInstance?.name }</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<ol class="property-list production">
-			
-				<g:if test="${productionInstance?.categories}">
-				<li class="fieldcontain">
-					<span id="categories-label" class="property-label"><g:message code="production.categories.label" default="Categories" /></span>
-					
-						<g:each in="${productionInstance.categories}" var="c">
-						<span class="property-value" aria-labelledby="categories-label"><g:link controller="castingCategory" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productionInstance?.client}">
-				<li class="fieldcontain">
-					<span id="client-label" class="property-label"><g:message code="production.client.label" default="Client" /></span>
-					
-						<span class="property-value" aria-labelledby="client-label"><g:link controller="client" action="show" id="${productionInstance?.client?.id}">${productionInstance?.client?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productionInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="production.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${productionInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productionInstance?.portfolios}">
-				<li class="fieldcontain">
-					<span id="portfolios-label" class="property-label"><g:message code="production.portfolios.label" default="Portfolios" /></span>
-					
-						<g:each in="${productionInstance.portfolios}" var="p">
-						<span class="property-value" aria-labelledby="portfolios-label"><g:link controller="portfolio" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${productionInstance?.roles}">
-				<li class="fieldcontain">
-					<span id="roles-label" class="property-label"><g:message code="production.roles.label" default="Roles" /></span>
-					
-						<g:each in="${productionInstance.roles}" var="r">
-						<span class="property-value" aria-labelledby="roles-label"><g:link controller="castingRole" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-			</ol>
+			<!-- The tabs -->
+	<tmpl:tabs/>
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${productionInstance?.id}" />
@@ -83,5 +59,30 @@
 				</fieldset>
 			</g:form>
 		</div>
+		<script type="text/javascript">
+// when the page has finished loading.. execute the follow
+
+$(document).ready(function() {		
+	$("#tabs").tabs(
+					{
+					active:cland_params.active_tab(),
+					create: function (event,ui){	
+						//executed after is created								
+						$('#tabs').show()
+					},
+					show: function(event,ui){
+						//on every tabs clicked
+					},
+					beforeLoad : function(event, ui) {
+							ui.jqXHR.error(function() {
+								ui.panel
+								.html("Couldn't load this tab. We'll try to fix this as soon as possible. ");
+							});
+						}
+			});		                
+});  //end method ready(...)
+
+</script>
 	</body>
+	
 </html>
