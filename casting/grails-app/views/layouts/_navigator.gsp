@@ -1,4 +1,4 @@
-<div class="nav" role="navigation">
+<div class="nav" role="navigation" style="">
 	<ul>
 		<sec:ifLoggedIn>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
@@ -12,8 +12,7 @@
 		</sec:ifAnyGranted>
 					<sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_DIRECTOR">
 					
-						<li><g:link controller="production" action="list">Productions</g:link></li>
-						<li><g:link controller="agency" action="list">Registered Learners</g:link></li>
+						<li><g:link controller="production" action="list">Productions</g:link></li>						
 						<li><g:link controller="user" action="list">People</g:link></li>
 					</sec:ifAnyGranted>
 

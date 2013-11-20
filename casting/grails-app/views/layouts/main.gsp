@@ -14,10 +14,13 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-			<link rel="stylesheet" href="${resource(dir: 'css', file: 'fieldset.css')}" type="text/css">
+			<!-- link rel="stylesheet" href="${resource(dir: 'css', file: 'fieldset.css')}" type="text/css" -->
+<link rel="stylesheet"	href="${resource(dir:'css/ui-lightness',file:'jquery-ui-1.10.3.custom.min.css')}" />
+
 		<g:layoutHead/>
 		<r:layoutResources />
 		<z:resources/>
+		
 		<style>
 		/* Custom rules */
 		.ui-jqgrid .ui-jqgrid-htable th div {
@@ -41,7 +44,7 @@
 		</style>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="/casting"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Cland"/></a></div>
+		<div id="grailsLogo" role="banner"><a href="/casting"><!-- img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Cland"/--></a></div>
 		<g:render template="/layouts/navigator" />
 		<g:layoutBody/>
 		<g:render template="/layouts/footer" />

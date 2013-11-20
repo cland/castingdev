@@ -6,6 +6,7 @@ class VideoSet {
 	static belongsTo = [candidate:Candidate]
 	static attachmentable = true
 	static constraints = {
+		name(nullable:false)
 	}
 	def beforeInsert = {
 		// your code goes here
