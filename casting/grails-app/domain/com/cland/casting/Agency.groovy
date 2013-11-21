@@ -1,8 +1,8 @@
 package com.cland.casting
 
 class Agency {
-	Organisation company
-	static hasMany = [contacts:User]
+	Organisation company 
+	static hasMany = [contacts:User,candidates:Candidate]
 	static constraints = {
 	}
 	def beforeInsert = {

@@ -3,7 +3,7 @@ package com.cland.casting
 import java.util.Date;
 
 class User {
-
+ 
 	transient springSecurityService
 
 	String username

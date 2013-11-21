@@ -5,7 +5,7 @@
 		<li><a href="#tab-portfolios">Portfolios</a></li>
 		<li id='tab_learner_head'><a href="#tab-learner">Other</a></li>
 		<li><a href="#tab-attachments">Supporting Documents</a></li>
-	</ul>	
+	</ul>
 	<div id="tab-production">
 			<ol class="property-list production">
 			<g:if test="${productionInstance?.name}">
@@ -37,6 +37,16 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${productionInstance?.profiles}">
+				<li class="fieldcontain">
+					<span id="roles-label" class="property-label"><g:message code="production.profiles.label" default="Profiles" /></span>
+					
+						<g:each in="${productionInstance.profiles}" var="r">
+						<span class="property-value" aria-labelledby="profiles-label"><g:link controller="castingProfile" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
 			</ol>	
 	</div>
 	<div id="tab-portfolios">

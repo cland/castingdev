@@ -15,10 +15,10 @@ hibernate {
 environments {
     development {
         dataSource {
-            username = "admin"
-			password = "password"
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost:3306/casting_dev?autoreconnect=true"
+            username = "root"
+			password = "Cland001"
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:mysql://localhost:3306/casting_dev1?autoreconnect=true"
         }
     }
     test {
@@ -26,7 +26,7 @@ environments {
             username = "admin"
 			password = "password"
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost:3306/casting_dev?autoreconnect=true"
+            url = "jdbc:mysql://localhost:3306/casting_dev1?autoreconnect=true"
         }
     }
     production {

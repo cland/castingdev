@@ -5,23 +5,32 @@ import java.util.Date;
 class CastingProfile {
 	BigInteger castNo
 	Date castDate
+	
+	boolean isInvited		//invited for first casting audition - Y/N
+	boolean isAuditionAvailable //called for casting audition - available Y/N
 	boolean isShortlist
+	boolean isRoleAvailable //accepted for the job - available Y/N
+	String outcome	//Final outcome
 	Integer round
-	Double averating
+	Double averating	//average rating - a computed field from the exiting ratings.
 	String comments
 	Candidate canditate
 	VideoSet videos
 	PictureSet pictures
-	static hasMany = [ratings:Rating]
-	static belongsTo = [portfolio:Portfolio]
+	static hasMany = [ratings:Rating,roles:CastingRole,categories:CastingCategory]
+	static belongsTo = [production:Production]
 	static constraints = {
-		
+		outcome(inList:["Pending","Selected","Not-Selected"],nullable:true)
+	}
+	
+	void computeAverageRating(){
+		averating = 0.0 //TODO: Calculate the average ratings
 	}
 	def beforeInsert = {
-		// your code goes here
+		computeAverageRating()
 	}
 	def beforeUpdate = {
-		// your code goes here
+		computeAverageRating()
 	}
 	def beforeDelete = {
 		// your code goes here

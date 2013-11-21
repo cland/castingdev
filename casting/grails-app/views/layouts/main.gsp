@@ -17,6 +17,8 @@
 			<!-- link rel="stylesheet" href="${resource(dir: 'css', file: 'fieldset.css')}" type="text/css" -->
 <link rel="stylesheet"	href="${resource(dir:'css/ui-lightness',file:'jquery-ui-1.10.3.custom.min.css')}" />
 
+<g:javascript library="jquerymin" />
+<g:javascript library="jqueryuilatest" />
 		<g:layoutHead/>
 		<r:layoutResources />
 		<z:resources/>

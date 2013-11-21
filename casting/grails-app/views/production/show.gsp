@@ -6,9 +6,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'production.label', default: 'Production')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
-<link rel="stylesheet"	href="${resource(dir:'css/south-street',file:'jquery-ui-1.10.3.custom.min.css')}" />
-<g:javascript library="jquerymin" />
-<g:javascript library="jqueryuilatest" />
+
 	<script type="text/javascript">
 //<![CDATA[
 var cland_params = {
@@ -21,8 +19,7 @@ var cland_params = {
 		<div class="bread-crump">
 				<span class="r-arrow"></span>
 				<g:link controller="production" action="list">Productions</g:link>
-				<span class="r-arrow"></span> 
-				<span class="current-crump">
+				<span class="r-arrow"></span> <span class="current-crump">
 					Production: ${productionInstance?.name } (Client: ${productionInstance?.client?.encodeAsHTML()})
 				</span>
 		</div>	
@@ -35,7 +32,6 @@ var cland_params = {
 			</g:if>
 			<!-- The tabs -->
 			<tmpl:tabs/>
-			
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${productionInstance?.id}" />
