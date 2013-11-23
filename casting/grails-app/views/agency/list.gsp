@@ -91,6 +91,22 @@
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div-->
+		<div class="nav" role="navigation" style="background-color:lightgray; width: 73.5%; align: right; float: left">
+			<p style="font-weight: bold;">Filter</p>
+			<ul>
+				<li>View By:<select name="viewFilter">
+				<option>Country</option>
+				<option>Region</option>
+				<option>City</option>
+				</select></li>
+				<li>Sort By:<select name="sortFilter">
+				<option>Name</option>
+				<option>Company</option>
+				</select></li>
+			
+			<li>Search: <g:textField name="searchString" />
+			</ul>
+		</div>
 		<div id="list-agency" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -101,7 +117,10 @@
 					<tr>
 					
 						<th><g:message code="agency.company.label" default="Company" /></th>
-					<th>Phone No.</th>
+						<th>Contact Person</th>
+					     <th>Phone No.</th>
+					     <th>Action</th>
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -109,13 +128,20 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${agencyInstance.id}">${fieldValue(bean: agencyInstance, field: "company")}</g:link></td>
+					<td>${agencyInstance.company?.contactPerson }</td>
 					<td>${agencyInstance.company?.phoneNo }</td>
+					<td>Sample</td>
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<div class="pagination">
 				<g:paginate total="${agencyInstanceTotal}" />
+				<a href="#" class="first" data-action="first">&laquo;</a>
+			    <a href="#" class="previous" data-action="previous">&lsaquo;</a>               
+			    <input type="text" readonly="readonly" />
+			    <a href="#" class="next" data-action="next">&rsaquo;</a>
+			    <a href="#" class="last" data-action="last">&raquo;</a>
 			</div>
 		</div>
 <script type="text/javascript">

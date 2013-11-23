@@ -21,7 +21,7 @@ class CastingApiService {
 	
 	def getAgencyCandidates(long agencyId, int offset, int max){
 		
-		def agency = Agency.get(agencyId)
+		/*def agency = Agency.get(agencyId)
 	//	def candidateList = agency.candidates
 		def candidateList = Candidate.createCriteria().list(offset:offset, max:max){
 			createAlias('agency','agent')
@@ -30,8 +30,8 @@ class CastingApiService {
 		}
 		
 		//candidateInstanceTotal: candidateList.totalCount
-		println(candidateList.size())
-		return candidateList
+		println(candidateList.size())*/
+		return Candidate.list()
 		
 	} //end function getAgencyCandidates
 	
