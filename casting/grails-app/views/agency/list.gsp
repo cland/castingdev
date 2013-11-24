@@ -6,10 +6,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'agency.label', default: 'Agency')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
-
-<g:javascript library="jquerymin" />
-<g:javascript library="jqueryuilatest" />
-
+		<g:javascript library="jqpagination"/>
 
 	</head>
 	<body>
@@ -33,56 +30,7 @@
 				</g:each>
 			</ul>
 		</div-->
-		<div id="accordion" style="font-size: 14px;">
-			<h3>Manage Agents</h3>
-			<div>
-				<ul>
-					<li><g:link class="create" controller="agency" action="create">
-							<g:message code="default.new.label" args="['Agency']" /></g:link></li>
-					<li><g:link class="list" controller="agency" action="list">
-							<g:message code="default.list.label" args="['Agency']" /></g:link></li>
-					<li>Delete agent</li>
-				</ul>
-			</div>
-			<h3>Manage Productions</h3>
-			<div>
-				<ul>
-					<li>Create/Update</li>
-					<li><g:link class="list" controller="production" action="list">
-							<g:message code="default.list.label" args="['Agency']" />
-						</g:link></li>
-					<li>Delete user</li>
-				</ul>
-			</div>
-			<h3>Manage Clients</h3>
-			<div>
-				<ul>
-					<li>Create/Update</li>
-					<li>List Clients</li>
-					<li>Delete client</li>
-				</ul>
-			</div>
-			<h3>Adhoc Admin</h3>
-			<div>
-				<p>Regions</p>
-				<ul>
-					<li>Create/update</li>
-					<li>List Regions</li>
-					<li>Delete Regions</li>
-				</ul>
-			</div>
-			<h3>Manage Users</h3>
-			<div>
-				<ul>
-					<li><g:link class="create" controller="user" action="create">
-							<g:message code="default.new.label" args="['User']" /></g:link></li>
-					<li><g:link class="list" controller="user" action="list">
-							<g:message code="default.list.label" args="['User']" />
-						</g:link></li>
-					<li>Delete user</li>
-				</ul>
-			</div>
-		</div>
+	<tmpl:sidenav/>
 	</div>
 		<a href="#list-agency" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <!-- div class="nav" role="navigation">
@@ -105,6 +53,7 @@
 				</select></li>
 			
 			<li>Search: <g:textField name="searchString" />
+			<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-agency" class="content scaffold-list" role="main">
@@ -112,7 +61,7 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<table>
+			<table class="myTable">
 				<thead>
 					<tr>
 					
@@ -130,15 +79,23 @@
 						<td><g:link action="show" id="${agencyInstance.id}">${fieldValue(bean: agencyInstance, field: "company")}</g:link></td>
 					<td>${agencyInstance.company?.contactPerson }</td>
 					<td>${agencyInstance.company?.phoneNo }</td>
-					<td>Sample</td>
+					<td>
+						<g:form>
+						<fieldset class="buttons">
+							<g:hiddenField name="id" value="${agencyInstance?.id}" />
+							<g:link class="edit" action="edit" id="${agencyInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+							<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+						</fieldset>
+					</g:form>
+					</td>
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
-			<div class="pagination">
+			<div class="pagination" style="margin-left: 20%;">
 				<g:paginate total="${agencyInstanceTotal}" />
 				<a href="#" class="first" data-action="first">&laquo;</a>
-			    <a href="#" class="previous" data-action="previous">&lsaquo;</a>               
+			    <a href="#" class="previous" data-action="previous"> &lsaquo;</a>               
 			    <input type="text" readonly="readonly" />
 			    <a href="#" class="next" data-action="next">&rsaquo;</a>
 			    <a href="#" class="last" data-action="last">&raquo;</a>
@@ -150,9 +107,19 @@
 $(document).ready(function() {		
 	 $(function() {
 		    $("#accordion" ).accordion();
-		  });		                
+		  });
+	       
 });  //end method ready(...)
-
+$(document).ready(function() {	
+	/*$('.myTable tr').hide().filter(':lt(3)').show();
+    $('.pagination').jqPagination({
+      max_page : $('.myTable tr').length -1,
+	  paged : function(page) {
+        $('.myTable tr:not(:first)').hide();
+        $($('.myTable tr')[page]).show();
+      }
+    }); */       
+});
 </script>		
 	</body>
 </html>

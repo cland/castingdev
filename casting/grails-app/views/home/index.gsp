@@ -12,11 +12,7 @@
 <link rel="stylesheet" href="${resource(dir: 'js/jquery-ui-1.10.3.custom/css/dark-hive', file: 'jquery-ui-1.10.3.custom.min.css')}" type="text/css">
 <script src="${resource(dir: 'js/jquery-ui-1.10.3.custom/js', file: 'jquery-ui-1.10.3.custom.js')}" type="text/javascript"></script>
 <script src="${resource(dir: 'js/jquery-ui-1.10.3.custom/js', file: 'jquery-ui-1.10.3.custom.min.js')}" type="text/javascript"-->
-<script>
-		  $(function() {
-		    $("#accordion" ).accordion();
-		  });
-		  </script>
+
 <style type="text/css" media="screen">
 #status {
 	background-color: #eee;
@@ -117,60 +113,7 @@ p {
 				</g:each>
 			</ul>
 		</div-->
-		<div id="accordion" style="font-size: 14px;">
-			<h3>Manage Agents</h3>
-			<div>
-				<ul>
-					<li><g:link class="create" controller="agency" action="create">
-							<g:message code="default.new.label" args="['Agency']" /></g:link></li>
-					<li><g:link class="list" controller="agency" action="list">
-							<g:message code="default.list.label" args="['Agency']" /></g:link></li>
-					<li>Delete agent</li>
-				</ul>
-			</div>
-			<sec:ifAnyGranted roles="ROLE_DIRECTOR">
-			<h3>Manage Productions</h3>
-			<div>
-				<ul>
-					<li>Create/Update</li>
-					<li><g:link class="list" controller="production" action="list">
-							<g:message code="default.list.label" args="['Agency']" />
-						</g:link></li>
-					<li>Delete user</li>
-				</ul>
-			</div>
-			</sec:ifAnyGranted>
-			<h3>Manage Clients</h3>
-			<div>
-				<ul>
-					<li>Create/Update</li>
-					<li>List Clients</li>
-					<li>Delete client</li>
-				</ul>
-			</div>
-			<h3>Adhoc Admin</h3>
-			<div>
-				<p>Regions</p>
-				<ul>
-					<li>Create/update</li>
-					<li>List Regions</li>
-					<li>Delete Regions</li>
-				</ul>
-			</div>
-			<sec:ifAnyGranted roles="ROLE_DIRECTOR">
-			<h3>Manage Users</h3>
-			<div>
-				<ul>
-					<li><g:link class="create" controller="user" action="create">
-							<g:message code="default.new.label" args="['User']" /></g:link></li>
-					<li><g:link class="list" controller="user" action="list">
-							<g:message code="default.list.label" args="['User']" />
-						</g:link></li>
-					<li>Delete user</li>
-				</ul>
-			</div>
-			</sec:ifAnyGranted>
-		</div>
+		<tmpl:sidenav/>
 	</div>
 	<div id="page-body" role="main">
 		<h1>Welcome to Grails</h1>
@@ -194,5 +137,10 @@ p {
 			</ul>
 		</div>
 	</div>
+	<script>
+		  $(function() {
+		    $("#accordion" ).accordion();
+		  });
+		  </script>
 </body>
 </html>

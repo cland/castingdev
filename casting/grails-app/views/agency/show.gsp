@@ -16,15 +16,18 @@ var cland_params = {
 </script>
 	</head>
 	<body>
+	<div id="status1" class="leftbar" role="complementary">
+         <tmpl:sidenav/>
+         </div>
 			<div class="bread-crump">
 				<span class="r-arrow"></span>
-				<g:link controller="production" action="list">Productions</g:link>
+				<g:link controller="agency" action="list">Agency</g:link>
 				<span class="r-arrow"></span> 
 				<span class="current-crump">
-					Production: ${productionInstance?.name } (Client: ${productionInstance?.client?.encodeAsHTML()})
+					Agency: ${agencyInstance?.id } (Company: ${agencyInstance?.company?.encodeAsHTML()})
 				</span>
 		</div>	
-	
+	    
 		<a href="#show-agency" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
 		<div id="show-agency" class="content scaffold-show" role="main">
@@ -47,6 +50,9 @@ var cland_params = {
 // when the page has finished loading.. execute the follow
 
 $(document).ready(function() {		
+	$(function() {
+	    $("#accordion" ).accordion();
+	  });
 	$("#tabs").tabs(
 					{
 					active:cland_params.active_tab(),

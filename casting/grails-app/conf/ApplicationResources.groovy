@@ -15,4 +15,15 @@ modules = {
 	jqueryuilatest{
 		resource url: 'js/jquery-ui-1.10.3.custom.min.js', disposition: 'head'
 	}
+	
+	jqpagination{
+		dependsOn: 'jquerymin'
+		dependsOn: 'jqueryuilatest'
+		
+		resource url: 'js/jqPagination-master/css/jqpagination.css'
+		resource url: 'js/jqPagination-master/js/jquery.jqpagination.js'
+		resource url: 'js/jqPagination-master/js/jquery.jqpagination.min.js'
+		//resource url: 'js/jqPagination-master/js/jquery-1.7.2.min.js'
+		resource url: 'js/jqPagination-master/js/scripts.js'
+	}
 }
